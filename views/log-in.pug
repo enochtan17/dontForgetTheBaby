@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+    div.login
+        img(src="/images/dftb1.png" id ="loginLogo")
+    
+        div.log-in-form
+            a(href='/user/signup'  id='signUpButton') Sign up for free
+            h2 Been here before? Welcome back!
+            if errors
+                p Sorry, that wasn't a valid log in. Please try again.
+            form(action='/user/login' method='post' class='loginForm')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                label(for='emailOrUsername') 
+                input(type='text' name='emailOrUsername' id='creds-input' value=emailOrUsername placeholder='Email or username')
+                label(for='password')
+                input(type='password' name='password' id='pw-input' value=password placeholder='Password (case sensitive)')
+                button.loginButton Log In
+            button(id='demo-user') Demo Log In
+
